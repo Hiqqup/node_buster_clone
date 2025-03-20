@@ -1,0 +1,38 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+warnings/check_invalid_track_paths=false
+
+[application]
+
+config/name="node_buster_clone"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+SessionParameters="*res://scripts/session_parameters.gd"
+
+[display]
+
+window/size/viewport_width=1728
+window/size/viewport_height=972
+window/stretch/mode="canvas_items"
+
+[global_group]
+
+Persistent="Objects that are saved locally."
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

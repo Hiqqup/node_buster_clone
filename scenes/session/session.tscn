@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnphjxx0xcdbx"]
+
+[ext_resource type="PackedScene" uid="uid://bgdrel5n2fbj4" path="res://scenes/session/gui/cursor.tscn" id="1_2ny7f"]
+[ext_resource type="Script" path="res://scripts/session/session.gd" id="1_qjs1e"]
+[ext_resource type="PackedScene" uid="uid://dco6567k8aplj" path="res://scenes/session/nodes/node_spawner.tscn" id="2_jcbg5"]
+[ext_resource type="PackedScene" uid="uid://b7p37jtch0l52" path="res://scenes/session/gui/health_bar.tscn" id="3_bch3m"]
+[ext_resource type="PackedScene" uid="uid://bxlrytdkuf3aa" path="res://scenes/general_gui/text_button.tscn" id="5_cxqk1"]
+[ext_resource type="PackedScene" uid="uid://dkx66jrttucf6" path="res://scenes/session/gui/session_result_screen.tscn" id="5_s0rbj"]
+
+[node name="Session" type="Node2D"]
+script = ExtResource("1_qjs1e")
+session_result_scene = ExtResource("5_s0rbj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6, 6)
+
+[node name="NodeSpawner" parent="." instance=ExtResource("2_jcbg5")]
+
+[node name="Gui" type="Node2D" parent="."]
+z_index = 16
+
+[node name="TerminateButton" parent="Gui" instance=ExtResource("5_cxqk1")]
+position = Vector2(117, 72)
+scale = Vector2(0.6, 0.6)
+color = Color(0.827451, 0.160784, 0.160784, 1)
+text = "TERMINATE"
+
+[node name="HealthBar" parent="Gui" node_paths=PackedStringArray("cursor") instance=ExtResource("3_bch3m")]
+position = Vector2(-142, -80)
+cursor = NodePath("../Cursor")
+
+[node name="Cursor" parent="Gui" node_paths=PackedStringArray("camera") instance=ExtResource("1_2ny7f")]
+z_index = 0
+camera = NodePath("../../Camera2D")
+
+[connection signal="clicked" from="Gui/TerminateButton" to="." method="_on_terminate_button_clicked"]
+[connection signal="die" from="Gui/HealthBar" to="." method="_on_health_bar_die"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxlrytdkuf3aa"]
+
+[ext_resource type="PackedScene" uid="uid://c4g6oau5lnrj2" path="res://scenes/general_gui/custom_button.tscn" id="1_eql0b"]
+[ext_resource type="Script" path="res://scripts/text_button.gd" id="2_0yyv6"]
+[ext_resource type="Texture2D" uid="uid://btfg66p1o4evm" path="res://assets/sprites/healthBarFrame.png" id="3_1yrgv"]
+[ext_resource type="FontFile" uid="uid://cg2hqu0pj6iy6" path="res://assets/Font.png" id="4_w6loy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs0y7"]
+size = Vector2(36, 20)
+
+[node name="TextButton" instance=ExtResource("1_eql0b")]
+script = ExtResource("2_0yyv6")
+color = Color(0, 0, 0, 1)
+text = ""
+width = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_gs0y7")
+
+[node name="Frame" type="NinePatchRect" parent="Visuals" index="0"]
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 12.0
+texture = ExtResource("3_1yrgv")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Body" type="ColorRect" parent="Visuals/Frame" index="0"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 22.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Visuals/Frame" index="1"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 49.0
+offset_bottom = 29.0
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("4_w6loy")
+text = "def"
+
+[node name="ColorFilter" parent="Visuals" index="1"]
+offset_top = -12.0
+offset_bottom = 12.0

@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbrmxe2no3top"]
+
+[ext_resource type="PackedScene" uid="uid://clx0nb2rvekxp" path="res://scenes/session/nodes/enemy_node.tscn" id="1_5xu4o"]
+[ext_resource type="PackedScene" uid="uid://dc7bomrsa83kc" path="res://scenes/session/loot/red_loot.tscn" id="2_aei4e"]
+
+[sub_resource type="Animation" id="Animation_vmsde"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.827451, 0.160784, 0.160784, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kq0uk"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.827451, 0.160784, 0.160784, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.827451, 0.160784, 0.160784, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cytka"]
+_data = {
+"RESET": SubResource("Animation_vmsde"),
+"hit": SubResource("Animation_kq0uk")
+}
+
+[node name="RedNode" instance=ExtResource("1_5xu4o")]
+loot_scene = ExtResource("2_aei4e")
+
+[node name="ModulateAnimationPlayer" type="AnimationPlayer" parent="AnimationPlayer" index="0"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_cytka")
+}
+
+[node name="Visuals" parent="." index="1"]
+modulate = Color(0.827451, 0.160784, 0.160784, 1)

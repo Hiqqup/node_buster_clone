@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc7bomrsa83kc"]
+
+[ext_resource type="PackedScene" uid="uid://5wqamr3ru4ts" path="res://scenes/session/loot/loot.tscn" id="1_mmf1h"]
+[ext_resource type="Texture2D" uid="uid://3sqnc50gdr3j" path="res://assets/sprites/RedLoot.png" id="2_h4gdp"]
+
+[node name="RedLoot" instance=ExtResource("1_mmf1h")]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="1"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_h4gdp")
